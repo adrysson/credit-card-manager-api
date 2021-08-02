@@ -10,7 +10,7 @@ interface MainRepositoryInterface
     /**
      * Returns paged list of companies
      */
-    public function paginate(): LengthAwarePaginator;
+    public function paginate(?int $perPage = 20): LengthAwarePaginator;
 
     /**
      * Returns a register according to the id provided

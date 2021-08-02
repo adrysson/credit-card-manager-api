@@ -8,9 +8,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class InvoiceRepositoryEloquent implements InvoiceRepositoryInterface
 {
-    public function paginate(): LengthAwarePaginator
+    public function paginate(?int $perPage = 20): LengthAwarePaginator
     {
-        return Invoice::paginate();
+        return Invoice::paginate($perPage);
     }
 
     public function getById(?int $id = null): array

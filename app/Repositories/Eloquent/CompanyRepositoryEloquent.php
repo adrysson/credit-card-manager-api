@@ -8,9 +8,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class CompanyRepositoryEloquent implements CompanyRepositoryInterface
 {
-    public function paginate(): LengthAwarePaginator
+    public function paginate(?int $perPage = 20): LengthAwarePaginator
     {
-        return Company::paginate();
+        return Company::paginate($perPage);
     }
 
     public function getById(?int $id = null): array
