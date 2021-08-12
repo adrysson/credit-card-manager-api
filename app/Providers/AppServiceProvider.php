@@ -8,6 +8,8 @@ use App\Repositories\Contracts\InvoiceRepositoryInterface;
 use App\Repositories\Eloquent\CardRepositoryEloquent;
 use App\Repositories\Eloquent\CompanyRepositoryEloquent;
 use App\Repositories\Eloquent\InvoiceRepositoryEloquent;
+use Faker\Factory;
+use Faker\Generator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(Generator::class, function () {
+            return Factory::create('pt_BR');
+        });
+
         $this->app->bind(CompanyRepositoryInterface::class, CompanyRepositoryEloquent::class);
         $this->app->bind(CardRepositoryInterface::class, CardRepositoryEloquent::class);
         $this->app->bind(InvoiceRepositoryInterface::class, InvoiceRepositoryEloquent::class);
