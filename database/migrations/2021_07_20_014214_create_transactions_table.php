@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->float('value');
             $table->foreignId('card_id')->constrained('cards');
             $table->integer('installments')->default(1);
+            $table->date('date');
             $table->timestamps();
         });
     }
