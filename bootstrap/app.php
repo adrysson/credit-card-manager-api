@@ -4,6 +4,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $envFileName = ".env";
 if (php_sapi_name() == 'cli') {
+
+    $env = env('APP_ENV');
+    $file = '.env.' . $env;
+
+    if (file_exists(dirname(__DIR__) . '/' . $file)) {
+        $envFileName = $file;
+    }
+
     $input = new \Symfony\Component\Console\Input\ArgvInput();
     $envParameterOption = $input->getParameterOption('--env');
     if ($input->hasParameterOption('--env') && file_exists(__DIR__ . '/../' . $envFileName . '.' . $envParameterOption)) {
