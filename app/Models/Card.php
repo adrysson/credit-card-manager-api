@@ -45,6 +45,11 @@ class Card extends Model
         return $this->hasMany(Invoice::class);
     }
 
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     protected function getLinksAttribute(): array
     {
         return [

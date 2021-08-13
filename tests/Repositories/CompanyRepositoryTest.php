@@ -2,8 +2,6 @@
 
 use App\Models\Company;
 use App\Repositories\Contracts\CompanyRepositoryInterface;
-use App\Repositories\Contracts\MainRepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Laravel\Lumen\Testing\DatabaseTransactions;
