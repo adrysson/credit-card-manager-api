@@ -53,3 +53,15 @@ $router->group(
         $router->delete('/{id}', 'InvoiceController@destroy');
     }
 );
+
+
+$router->group(
+    ['prefix' => 'transactions'],
+    function () use ($router) {
+        $router->get('/', 'TransactionController@index');
+        $router->post('/', 'TransactionController@store');
+        $router->get('/{id}', 'TransactionController@view');
+        $router->put('/{id}', 'TransactionController@update');
+        $router->delete('/{id}', 'TransactionController@destroy');
+    }
+);
