@@ -53,8 +53,10 @@ class Card extends Model
     protected function getLinksAttribute(): array
     {
         return [
+            '_self' => env('APP_URL') . "/cards/$this->id",
             'company' => env('APP_URL') . "/companies/$this->company_id",
             'invoices' => env('APP_URL') . "/cards/$this->id/invoices",
+            'transactions' => env('APP_URL') . "/cards/$this->id/transactions",
         ];
     }
 }

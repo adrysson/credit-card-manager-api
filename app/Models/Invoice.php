@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Invoice extends Model
 {
@@ -36,15 +37,17 @@ class Invoice extends Model
         return $this->belongsTo(Card::class);
     }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(InvoiceItem::class);
+    }
+
     protected function getLinksAttribute(): array
     {
         return [
+            '_self' => env('APP_URL') . "/invoices/$this->id",
             'card' => env('APP_URL') . "/cards/$this->card_id",
+            'items' => env('APP_URL') . "/invoices/$this->id/items",
         ];
-    }
-
-    protected function setDueDateAttribute($date)
-    {
-        dd($date);
     }
 }

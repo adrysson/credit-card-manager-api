@@ -29,6 +29,7 @@ class Company extends Model
     protected function getLinksAttribute(): array
     {
         return [
+            '_self' => env('APP_URL') . "/companies/$this->id",
             'cards' => env('APP_URL') . "/companies/$this->id/cards",
         ];
     }
